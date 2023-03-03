@@ -41,7 +41,7 @@
                 android:orientation="vertical">
 
                 <EditText
-                    android:id="@+id/placemarkTitle"
+                    android:id="@+id/campaignTitle"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_margin="8dp"
@@ -59,9 +59,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
-                    android:background="@color/colorAccent"
+                    android:background="@color/purple_200"
                     android:paddingTop="8dp"
                     android:paddingBottom="8dp"
+                    android:translationY="75mm"
+                    android:rotationY="0"
                     android:stateListAnimator="@null"
                     android:text="@string/button_addCampaign"
                     android:textColor="@color/colorPrimary"
