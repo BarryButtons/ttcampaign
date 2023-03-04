@@ -31,6 +31,8 @@ class CampaignActivity : AppCompatActivity() {
                 for (i in app.campaigns.indices) {
                     i("Campaign[$i]:${this.app.campaigns[i]}")
                 }
+                setResult(RESULT_OK)
+                finish()
             }
                 else  {
                     Snackbar.make(it, "Campaign needs a title", Snackbar.LENGTH_LONG).show()
