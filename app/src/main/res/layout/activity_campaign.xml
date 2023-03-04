@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CampaignActivity">
+    tools:context=".activities.CampaignActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -54,6 +54,19 @@
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="14sp" />
 
+                <EditText
+                    android:id="@+id/description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:hint="@string/hint_campaignDescription"
+                    android:inputType="text"
+                    android:maxLength="25"
+                    android:maxLines="1"
+                    android:padding="8dp"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize ="14sp" />
+
                 <Button
                     android:id="@+id/btnAdd"
                     android:layout_width="match_parent"
@@ -62,7 +75,7 @@
                     android:background="@color/purple_200"
                     android:paddingTop="8dp"
                     android:paddingBottom="8dp"
-                    android:translationY="75mm"
+
                     android:rotationY="0"
                     android:stateListAnimator="@null"
                     android:text="@string/button_addCampaign"
