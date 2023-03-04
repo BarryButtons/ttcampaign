@@ -2,6 +2,8 @@ package com.example.campaign.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import com.example.campaign.R
 import com.example.campaign.databinding.ActivityCampaignBinding
 import com.example.campaign.main.MainApp
@@ -17,8 +19,12 @@ class CampaignActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         binding = ActivityCampaignBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.toolbarAdd.title = title
+        setSupportActionBar(binding.toolbarAdd)
 
         app = application as MainApp
         i("Activity Started")
@@ -39,4 +45,19 @@ class CampaignActivity : AppCompatActivity() {
                 }
             }
         }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_campaign,menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId){
+            R.id.item_cancel -> {
+                finish()
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
     }

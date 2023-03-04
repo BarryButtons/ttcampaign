@@ -4,4 +4,5 @@
     <string name="hint_campaignTitle">Campaign Title</string>
     <string name="hint_campaignDescription"> Description</string>
     <string name="menu_addCampaign">Add</string>
+    <string name="menu_cancelCampaign">Back</string>
 </resources>
