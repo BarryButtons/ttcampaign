@@ -13,5 +13,7 @@ class MainApp: Application() {
         super.onCreate()
         Timber.plant(Timber.DebugTree())
         i("Application Started")
+        campaigns.add(CampaignModel("Forgotten Realms", "A good level one campaign for beginners"))
+
     }
 }
