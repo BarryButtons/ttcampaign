@@ -4,18 +4,15 @@ import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
-import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.campaign.R
+import com.example.campaign.adapters.CampaignAdapter
 import com.example.campaign.databinding.ActivityCampaignListBinding
-import com.example.campaign.databinding.CardCampaignBinding
 import com.example.campaign.main.MainApp
-import com.example.campaign.models.CampaignModel
+
 
 class CampaignListActivity : AppCompatActivity() {
 
@@ -59,28 +56,4 @@ class CampaignListActivity : AppCompatActivity() {
         }
 }
 
-class CampaignAdapter constructor(private var campaigns: List<CampaignModel>) :
-        RecyclerView.Adapter<CampaignAdapter.MainHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
-        val binding = CardCampaignBinding
-            .inflate(LayoutInflater.from(parent.context), parent, false)
-
-        return MainHolder(binding)
-    }
-
-    override fun onBindViewHolder(holder: MainHolder, position: Int) {
-        val campaign = campaigns[holder.adapterPosition]
-        holder.bind(campaign)
-    }
-
-    override fun getItemCount(): Int = campaigns.size
-
-    class MainHolder(private val binding : CardCampaignBinding) :
-            RecyclerView.ViewHolder(binding.root){
-                fun bind(campaign: CampaignModel) {
-                    binding.campaignTitle.text = campaign.title
-                    binding.description.text = campaign.description
-                }
-            }
-}
