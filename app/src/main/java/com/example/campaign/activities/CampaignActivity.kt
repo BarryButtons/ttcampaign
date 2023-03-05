@@ -8,7 +8,9 @@ import android.view.MenuItem
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import com.example.campaign.R
+import com.squareup.picasso.Picasso
 import com.example.campaign.databinding.ActivityCampaignBinding
+import com.example.campaign.helpers.showImagePicker
 import com.example.campaign.main.MainApp
 import com.example.campaign.models.CampaignModel
 import com.google.android.material.snackbar.Snackbar
@@ -33,6 +35,8 @@ class CampaignActivity : AppCompatActivity() {
 
         app = application as MainApp
 
+
+
         if (intent.hasExtra("campaign_edit")) {
             edit = true
             campaign = intent.extras?.getParcelable("campaign_edit")!!
@@ -41,6 +45,9 @@ class CampaignActivity : AppCompatActivity() {
             binding.dmNotes.setText(campaign.dmNotes)
            // binding.players.setText(campaign.players.toString())
             binding.btnAdd.setText(R.string.save_campaign)
+            Picasso.get()
+                .load(campaign.image)
+                .into(binding.campaignImage)
         }
 
         binding.btnAdd.setOnClickListener() {
@@ -59,11 +66,13 @@ class CampaignActivity : AppCompatActivity() {
             } else {
                 Snackbar.make(it, R.string.enter_campaign_title, Snackbar.LENGTH_LONG).show()
             }
-            binding.chooseImage.setOnClickListener {
-                i("Select image")
-            }
         }
-}
+        binding.chooseImage.setOnClickListener {
+            showImagePicker(imageIntentLauncher)
+        }
+
+        registerImagePickerCallback()
+    }
 
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -87,6 +96,10 @@ class CampaignActivity : AppCompatActivity() {
                     RESULT_OK -> {
                         if (result.data != null) {
                             i("Got Result ${result.data!!.data}")
+                            campaign.image = result.data!!.data!!
+                            Picasso.get()
+                                .load(campaign.image)
+                                .into(binding.campaignImage)
                         } // end of if
                     }
                     RESULT_CANCELED -> { } else -> { }

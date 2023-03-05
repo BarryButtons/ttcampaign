@@ -20,7 +20,8 @@
             android:layout_marginTop="-54dp"
             android:text="Campaign Title"
             android:textAllCaps="true"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/campaignTitle"
@@ -36,8 +37,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/campaignTitle"
+            android:layout_marginTop="10dp"
             android:text="Description"
             android:textAllCaps="true"
+            android:textStyle="bold"
             android:textSize="16sp" />
 
         <TextView
@@ -52,8 +55,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/description"
+            android:layout_marginTop="10dp"
             android:text="DM Notes"
             android:textAllCaps="true"
+            android:textStyle="bold"
             android:textSize="16sp" />
 
         <TextView
