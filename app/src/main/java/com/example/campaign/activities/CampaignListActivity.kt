@@ -59,6 +59,7 @@ class CampaignListActivity : AppCompatActivity(), CampaignListener {
 
     override fun onCampaignClick(campaign: CampaignModel) {
         val launcherIntent = Intent(this,CampaignActivity::class.java)
+        launcherIntent.putExtra("campaign_edit",campaign)
         getClickResult.launch(launcherIntent)
     }
 

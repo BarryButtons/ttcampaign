@@ -19,15 +19,18 @@ class CampaignActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivityCampaignBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         binding.toolbarAdd.title = title
         setSupportActionBar(binding.toolbarAdd)
-
         app = application as MainApp
-        i("Activity Started")
+
+       if(intent.hasExtra("campaign_edit")){
+           campaign = intent.extras?.getParcelable("campaign_edit")!!
+           binding.campaignTitle.setText(campaign.title)
+           binding.description.setText(campaign.description)
+       }
+
         binding.btnAdd.setOnClickListener() {
             campaign.title = binding.campaignTitle.text.toString()
             campaign.description = binding.description.text.toString()
