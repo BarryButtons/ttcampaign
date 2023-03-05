@@ -1,4 +1,5 @@
 <resources>
+
     <string name="app_name">Campaign Tracker</string>
     <string name="button_addCampaign">Add Campaign</string>
     <string name="hint_campaignTitle">Campaign Title</string>
@@ -9,5 +10,7 @@
     <string name="menu_cancelCampaign">Back</string>
     <string name="enter_campaign_title"> Please enter a Campaign Title </string>
     <string name="save_campaign"> Save Campaign </string>
+    <string name="button_addImage"> Add Image </string>
+    <string name="select_campaign_image">Select campaign image</string>
 
 </resources>

@@ -1,9 +1,12 @@
 package com.example.campaign.activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import com.example.campaign.R
 import com.example.campaign.databinding.ActivityCampaignBinding
 import com.example.campaign.main.MainApp
@@ -16,6 +19,7 @@ class CampaignActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCampaignBinding
     var campaign = CampaignModel()
     lateinit var app: MainApp
+    private lateinit var imageIntentLauncher : ActivityResultLauncher<Intent>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,6 +59,9 @@ class CampaignActivity : AppCompatActivity() {
             } else {
                 Snackbar.make(it, R.string.enter_campaign_title, Snackbar.LENGTH_LONG).show()
             }
+            binding.chooseImage.setOnClickListener {
+                i("Select image")
+            }
         }
 }
 
@@ -71,6 +78,20 @@ class CampaignActivity : AppCompatActivity() {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+    private fun registerImagePickerCallback() {
+        imageIntentLauncher =
+            registerForActivityResult(ActivityResultContracts.StartActivityForResult())
+            { result ->
+                when(result.resultCode){
+                    RESULT_OK -> {
+                        if (result.data != null) {
+                            i("Got Result ${result.data!!.data}")
+                        } // end of if
+                    }
+                    RESULT_CANCELED -> { } else -> { }
+                }
+            }
     }
 
 }

@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.campaign.R
@@ -14,9 +15,12 @@ import com.example.campaign.adapters.CampaignListener
 import com.example.campaign.databinding.ActivityCampaignListBinding
 import com.example.campaign.main.MainApp
 import com.example.campaign.models.CampaignModel
+import timber.log.Timber.i
 
 
 class CampaignListActivity : AppCompatActivity(), CampaignListener {
+
+
 
     lateinit var app: MainApp
     private lateinit var binding: ActivityCampaignListBinding
@@ -74,6 +78,7 @@ class CampaignListActivity : AppCompatActivity(), CampaignListener {
                         notifyItemRangeChanged(0,app.campaigns.findAll().size)
             }
         }
+
 }
 
 
