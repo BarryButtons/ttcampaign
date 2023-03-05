@@ -28,6 +28,7 @@ class CampaignMemStore : CampaignStore{
         if (foundCampaign !=null){
             foundCampaign.title = campaign.title
             foundCampaign.description = campaign.description
+            foundCampaign.dmNotes = campaign.dmNotes
             logAll()
         }
     }

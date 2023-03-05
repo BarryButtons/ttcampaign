@@ -17,7 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="10dp"
             android:textSize="30sp"
             tools:text="A Title" />
 
@@ -27,6 +27,15 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/campaignTitle"
             tools:text="A Description" />
+
+        <TextView
+            android:id="@+id/dmNotes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/description"
+            tools:text="Notes for players" />
+
+
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

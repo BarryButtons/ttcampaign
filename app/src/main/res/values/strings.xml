@@ -3,6 +3,8 @@
     <string name="button_addCampaign">Add Campaign</string>
     <string name="hint_campaignTitle">Campaign Title</string>
     <string name="hint_campaignDescription"> Description</string>
+    <string name="hint_dmNotes"> Enter Note for players</string>
+    <string name="hint_nextSession"> when is next session</string>
     <string name="menu_addCampaign">Add</string>
     <string name="menu_cancelCampaign">Back</string>
     <string name="enter_campaign_title"> Please enter a Campaign Title </string>

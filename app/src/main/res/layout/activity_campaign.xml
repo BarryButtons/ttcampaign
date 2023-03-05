@@ -17,7 +17,7 @@
             android:id="@+id/appBarLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorAccent"
+            android:background="@color/colorPrimaryDark"
             android:fitsSystemWindows="true"
             app:elevation="0dip"
             app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
@@ -26,7 +26,7 @@
                 android:id="@+id/toolbarAdd"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:titleTextColor="@color/colorPrimary" />
+                app:titleTextColor="@color/white" />
         </com.google.android.material.appbar.AppBarLayout>
 
         <ScrollView
@@ -51,7 +51,7 @@
                     android:maxLength="25"
                     android:maxLines="1"
                     android:padding="8dp"
-                    android:textColor="@color/colorPrimaryDark"
+                    android:textColor="@color/grey"
                     android:textSize="14sp" />
 
                 <EditText
@@ -62,12 +62,25 @@
                     android:autofillHints="hint"
                     android:hint="@string/hint_campaignDescription"
                     android:inputType="text"
+                    android:maxLength="500"
+                    android:maxLines="1"
+                    android:padding="8dp"
+                    android:textColor="@color/grey"
+                    android:textSize ="14sp" />
+
+                <EditText
+                    android:id="@+id/dmNotes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:autofillHints="hint"
+                    android:hint="@string/hint_dmNotes"
+                    android:inputType="text"
                     android:maxLength="25"
                     android:maxLines="1"
                     android:padding="8dp"
-                    android:textColor="@color/colorPrimaryDark"
+                    android:textColor="@color/grey"
                     android:textSize ="14sp" />
-
 
                 <Button
                     android:id="@+id/btnAdd"
@@ -77,12 +90,13 @@
                     android:background="@color/purple_200"
                     android:paddingTop="8dp"
                     android:paddingBottom="8dp"
-
                     android:rotationY="0"
                     android:stateListAnimator="@null"
                     android:text="@string/button_addCampaign"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="16sp" />
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    />
+
             </LinearLayout>
         </ScrollView>
 

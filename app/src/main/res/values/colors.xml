@@ -9,7 +9,12 @@
     <color name="white">#FFFFFFFF</color>
 
 
-    <color name="colorPrimary">#FFFFFF</color>
-    <color name="colorPrimaryDark">#000000</color>
+    <color name="colorPrimary">#262626</color>
+    <color name="colorPrimaryDark">#810311</color>
     <color name="colorAccent">#4c90af</color>
+
+    //newcolours
+    <color name="black_100">#100C08</color>
+    <color name="grey">#262626</color>
+    <color name="red_dark">#810311</color>
 </resources>

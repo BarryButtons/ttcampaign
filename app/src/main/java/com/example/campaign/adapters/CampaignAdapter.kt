@@ -1,5 +1,6 @@
 package com.example.campaign.adapters
 
+import android.text.InputType
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -33,6 +34,8 @@ class CampaignAdapter constructor(private var campaigns: List<CampaignModel>,
         fun bind(campaign: CampaignModel, listener: CampaignListener) {
             binding.campaignTitle.text = campaign.title
             binding.description.text = campaign.description
+            binding.dmNotes.text = campaign.dmNotes
+            //binding.players.inputType = InputType.TYPE_CLASS_NUMBER
             binding.root.setOnClickListener{listener.onCampaignClick(campaign)}
 
         }

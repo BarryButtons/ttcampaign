@@ -34,12 +34,16 @@ class CampaignActivity : AppCompatActivity() {
             campaign = intent.extras?.getParcelable("campaign_edit")!!
             binding.campaignTitle.setText(campaign.title)
             binding.description.setText(campaign.description)
+            binding.dmNotes.setText(campaign.dmNotes)
+           // binding.players.setText(campaign.players.toString())
             binding.btnAdd.setText(R.string.save_campaign)
         }
 
         binding.btnAdd.setOnClickListener() {
             campaign.title = binding.campaignTitle.text.toString()
             campaign.description = binding.description.text.toString()
+            campaign.dmNotes = binding.dmNotes.text.toString()
+           // campaign.players = binding.players.text.toString().toIntOrNull() ?:0
             if (campaign.title.isNotEmpty()) {
                 if (edit) {
                     app.campaigns.update(campaign.copy())
@@ -69,4 +73,4 @@ class CampaignActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    }
+}
