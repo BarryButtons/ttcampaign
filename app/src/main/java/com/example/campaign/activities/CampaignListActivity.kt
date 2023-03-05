@@ -10,11 +10,13 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.campaign.R
 import com.example.campaign.adapters.CampaignAdapter
+import com.example.campaign.adapters.CampaignListener
 import com.example.campaign.databinding.ActivityCampaignListBinding
 import com.example.campaign.main.MainApp
+import com.example.campaign.models.CampaignModel
 
 
-class CampaignListActivity : AppCompatActivity() {
+class CampaignListActivity : AppCompatActivity(), CampaignListener {
 
     lateinit var app: MainApp
     private lateinit var binding: ActivityCampaignListBinding
@@ -29,7 +31,7 @@ class CampaignListActivity : AppCompatActivity() {
 
         val layoutManager = LinearLayoutManager(this)
         binding.recyclerView.layoutManager = layoutManager
-        binding.recyclerView.adapter = CampaignAdapter(app.campaigns)
+        binding.recyclerView.adapter = CampaignAdapter(app.campaigns.findAll(),this)
     }
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
@@ -51,7 +53,22 @@ class CampaignListActivity : AppCompatActivity() {
         ) {
             if (it.resultCode == Activity.RESULT_OK) {
                 (binding.recyclerView.adapter)?.
-                notifyItemRangeChanged(0,app.campaigns.size)
+                notifyItemRangeChanged(0,app.campaigns.findAll().size)
+            }
+        }
+
+    override fun onCampaignClick(campaign: CampaignModel) {
+        val launcherIntent = Intent(this,CampaignActivity::class.java)
+        getClickResult.launch(launcherIntent)
+    }
+
+    private val getClickResult =
+        registerForActivityResult(
+            ActivityResultContracts.StartActivityForResult()
+        ){
+            if (it.resultCode == Activity.RESULT_OK){
+                (binding.recyclerView.adapter)?.
+                        notifyItemRangeChanged(0,app.campaigns.findAll().size)
             }
         }
 }

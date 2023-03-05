@@ -32,11 +32,7 @@ class CampaignActivity : AppCompatActivity() {
             campaign.title = binding.campaignTitle.text.toString()
             campaign.description = binding.description.text.toString()
             if (campaign.title.isNotEmpty()) {
-                app.campaigns.add(campaign.copy())
-                i("add Button Pressed:${campaign}")
-                for (i in app.campaigns.indices) {
-                    i("Campaign[$i]:${this.app.campaigns[i]}")
-                }
+                app.campaigns.create(campaign.copy())
                 setResult(RESULT_OK)
                 finish()
             }
