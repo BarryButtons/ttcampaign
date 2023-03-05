@@ -1,3 +1,3 @@
 Table Top Campaign Tracker
 
-A simple tracker for tracking your table top game. Player name aswell as Character name, race and class
+A simple tracker for tracking your table top game. A brief description of the game and note from the DM.
