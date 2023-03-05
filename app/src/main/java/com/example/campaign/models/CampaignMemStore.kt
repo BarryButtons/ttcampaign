@@ -10,7 +10,7 @@ internal fun getId(): Long{
 
 class CampaignMemStore : CampaignStore{
 
-    val campaigns = ArrayList<CampaignModel>()
+    private val campaigns = ArrayList<CampaignModel>()
 
     override fun findAll(): List<CampaignModel>{
         return campaigns
@@ -27,10 +27,11 @@ class CampaignMemStore : CampaignStore{
 
         if (foundCampaign !=null){
             foundCampaign.title = campaign.title
-            foundCampaign.description =campaign.description
+            foundCampaign.description = campaign.description
+            logAll()
         }
     }
-    fun logAll(){
-        campaigns.forEach{ i("${it}")}
+    private fun logAll(){
+        campaigns.forEach{ i("$it")}
     }
 }

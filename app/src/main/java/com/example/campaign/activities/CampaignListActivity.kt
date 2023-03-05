@@ -22,8 +22,10 @@ class CampaignListActivity : AppCompatActivity(), CampaignListener {
     private lateinit var binding: ActivityCampaignListBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         binding = ActivityCampaignListBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         binding.toolbar.title = title
         setSupportActionBar(binding.toolbar)
 
