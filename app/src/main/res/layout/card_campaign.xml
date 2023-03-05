@@ -13,6 +13,17 @@
         android:padding="16dp">
 
         <TextView
+            android:id="@+id/campaignTitleLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/campaignTitle"
+            android:layout_marginTop="-54dp"
+            android:text="Campaign Title"
+            android:textAllCaps="true"
+            android:textSize="16sp"
+            android:textStyle="bold"/>
+
+        <TextView
             android:id="@+id/campaignTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -22,20 +33,40 @@
             tools:text="A Title" />
 
         <TextView
-            android:id="@+id/description"
+            android:id="@+id/descriptionLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/campaignTitle"
+            android:layout_marginTop="10dp"
+            android:text="Description"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/descriptionLabel"
             tools:text="A Description" />
+
+        <TextView
+            android:id="@+id/dmNotesLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/description"
+            android:layout_marginTop="10dp"
+            android:text="DM Notes"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/dmNotes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/description"
-            tools:text="Notes for players" />
-
-
+            android:layout_below="@id/dmNotesLabel"
+            tools:text="Notes for Players" />
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>
