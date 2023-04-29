@@ -15,7 +15,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 
-class MapActivity : AppCompatActivity(), OnMapReadyCallback,  GoogleMap.OnMarkerDragListener {
+class MapActivity : AppCompatActivity(), OnMapReadyCallback,  GoogleMap.OnMarkerDragListener,GoogleMap.OnMarkerClickListener {
 
 
     private lateinit var map: GoogleMap
@@ -41,12 +41,13 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback,  GoogleMap.OnMarker
             .position(loc)
         map.addMarker(options)
         map.setOnMarkerDragListener(this)
+        map.setOnMarkerClickListener(this)
         map.moveCamera(CameraUpdateFactory.newLatLngZoom(loc, location.zoom))
     }
 
     override fun onMarkerDrag(p0: Marker) {
 
-    }
+}
 
     override fun onMarkerDragEnd(marker: Marker) {
         location.lat = marker.position.latitude
@@ -65,4 +66,9 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback,  GoogleMap.OnMarker
         super.onBackPressed()
     }
 
+    override fun onMarkerClick(marker: Marker): Boolean {
+        val loc = LatLng(location.lat, location.lng)
+        marker.snippet = "GPS : $loc"
+        return false
+    }
 }

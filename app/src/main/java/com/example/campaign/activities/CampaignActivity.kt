@@ -24,7 +24,7 @@ class CampaignActivity : AppCompatActivity() {
     lateinit var app: MainApp
     private lateinit var imageIntentLauncher : ActivityResultLauncher<Intent>
     private lateinit var mapIntentLauncher : ActivityResultLauncher<Intent>
-    var location = Location(52.245696, -7.139102, 15f)
+    //var location = Location(52.245696, -7.139102, 15f)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -74,7 +74,12 @@ class CampaignActivity : AppCompatActivity() {
             showImagePicker(imageIntentLauncher)
         }
         binding.campaignLocation.setOnClickListener {
-
+            val location = Location(52.245696, -7.139102, 15f)
+            if (campaign.zoom != 0f){
+                location.lat = campaign.lat
+                location.lng = campaign.lng
+                location.zoom = campaign.zoom
+            }
             val launcherIntent = Intent(this, MapActivity::class.java)
                 .putExtra("location", location)
             mapIntentLauncher.launch(launcherIntent)
@@ -126,14 +131,18 @@ class CampaignActivity : AppCompatActivity() {
                     RESULT_OK -> {
                         if (result.data != null) {
                             i("Got Location ${result.data.toString()}")
-                            location = result.data!!.extras?.getParcelable("location")!!
+                            val location = result.data!!.extras?.getParcelable<Location>("location")!!
                             i("Location == $location")
-                        } // end of if
+                            campaign.lat = location.lat
+                            campaign.lng = location.lng
+                            campaign.zoom = location.zoom
+                        }
                     }
                     RESULT_CANCELED -> { } else -> { }
                 }
             }
     }
+
 
 
 }
