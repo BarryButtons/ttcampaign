@@ -74,10 +74,12 @@ class CampaignActivity : AppCompatActivity() {
             showImagePicker(imageIntentLauncher)
         }
         binding.campaignLocation.setOnClickListener {
-                val launcherIntent = Intent(this, MapActivity::class.java)
-                    .putExtra("location", location)
-                mapIntentLauncher.launch(launcherIntent)
+
+            val launcherIntent = Intent(this, MapActivity::class.java)
+                .putExtra("location", location)
+            mapIntentLauncher.launch(launcherIntent)
         }
+
 
         registerImagePickerCallback()
         registerMapCallback()
@@ -119,7 +121,19 @@ class CampaignActivity : AppCompatActivity() {
     private fun registerMapCallback() {
         mapIntentLauncher =
             registerForActivityResult(ActivityResultContracts.StartActivityForResult())
-            { i("Map Loaded") }
+            { result ->
+                when (result.resultCode) {
+                    RESULT_OK -> {
+                        if (result.data != null) {
+                            i("Got Location ${result.data.toString()}")
+                            location = result.data!!.extras?.getParcelable("location")!!
+                            i("Location == $location")
+                        } // end of if
+                    }
+                    RESULT_CANCELED -> { } else -> { }
+                }
+            }
     }
+
 
 }
