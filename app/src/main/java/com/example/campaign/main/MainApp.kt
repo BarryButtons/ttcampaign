@@ -8,13 +8,12 @@ import timber.log.Timber.i
 
 class MainApp: Application() {
 
-   //val campaigns = ArrayList<CampaignModel>()
-    val campaigns = CampaignMemStore()
+
+   var campaigns = CampaignMemStore()
     override fun onCreate(){
         super.onCreate()
         Timber.plant(Timber.DebugTree())
+        campaigns = CampaignMemStore()
         i("Campaign Add Selected")
-       // campaigns.add(CampaignModel("Forgotten Realms", "A good level one campaign for beginners"))
-
     }
 }
