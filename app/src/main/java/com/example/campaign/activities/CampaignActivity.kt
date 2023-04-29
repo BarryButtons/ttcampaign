@@ -13,6 +13,7 @@ import com.example.campaign.databinding.ActivityCampaignBinding
 import com.example.campaign.helpers.showImagePicker
 import com.example.campaign.main.MainApp
 import com.example.campaign.models.CampaignModel
+import com.example.campaign.models.Location
 import com.google.android.material.snackbar.Snackbar
 import timber.log.Timber
 import timber.log.Timber.i
@@ -22,6 +23,8 @@ class CampaignActivity : AppCompatActivity() {
     var campaign = CampaignModel()
     lateinit var app: MainApp
     private lateinit var imageIntentLauncher : ActivityResultLauncher<Intent>
+    private lateinit var mapIntentLauncher : ActivityResultLauncher<Intent>
+    var location = Location(52.245696, -7.139102, 15f)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -70,8 +73,14 @@ class CampaignActivity : AppCompatActivity() {
         binding.chooseImage.setOnClickListener {
             showImagePicker(imageIntentLauncher)
         }
+        binding.campaignLocation.setOnClickListener {
+                val launcherIntent = Intent(this, MapActivity::class.java)
+                    .putExtra("location", location)
+                mapIntentLauncher.launch(launcherIntent)
+        }
 
         registerImagePickerCallback()
+        registerMapCallback()
     }
 
 
@@ -105,6 +114,12 @@ class CampaignActivity : AppCompatActivity() {
                     RESULT_CANCELED -> { } else -> { }
                 }
             }
+    }
+
+    private fun registerMapCallback() {
+        mapIntentLauncher =
+            registerForActivityResult(ActivityResultContracts.StartActivityForResult())
+            { i("Map Loaded") }
     }
 
 }
