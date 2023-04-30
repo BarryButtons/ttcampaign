@@ -8,12 +8,14 @@ import timber.log.Timber.i
 
 class MainApp: Application() {
 
+        lateinit var campaigns: CampaignMemStore
 
-   var campaigns = CampaignMemStore()
-    override fun onCreate(){
-        super.onCreate()
-        Timber.plant(Timber.DebugTree())
-        campaigns = CampaignMemStore()
-        i("Campaign Add Selected")
+        override fun onCreate() {
+            super.onCreate()
+            Timber.plant(Timber.DebugTree())
+            campaigns = CampaignMemStore()
+            i("Campaign Add Selected")
+        }
     }
-}
+
+

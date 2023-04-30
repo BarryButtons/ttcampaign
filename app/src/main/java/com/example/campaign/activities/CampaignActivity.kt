@@ -71,8 +71,9 @@ class CampaignActivity : AppCompatActivity() {
             }
         }
         binding.chooseImage.setOnClickListener {
-            showImagePicker(imageIntentLauncher)
+            showImagePicker(imageIntentLauncher,this)
         }
+
         binding.campaignLocation.setOnClickListener {
             val location = Location(52.245696, -7.139102, 15f)
             if (campaign.zoom != 0f){
@@ -112,16 +113,23 @@ class CampaignActivity : AppCompatActivity() {
                     RESULT_OK -> {
                         if (result.data != null) {
                             i("Got Result ${result.data!!.data}")
-                            campaign.image = result.data!!.data!!
+
+                            val image = result.data!!.data!!
+                            contentResolver.takePersistableUriPermission(image,
+                                Intent.FLAG_GRANT_READ_URI_PERMISSION)
+                            campaign.image = image
+
                             Picasso.get()
                                 .load(campaign.image)
                                 .into(binding.campaignImage)
+                            binding.chooseImage.setText("Add Image")
                         } // end of if
                     }
                     RESULT_CANCELED -> { } else -> { }
                 }
             }
     }
+
 
     private fun registerMapCallback() {
         mapIntentLauncher =

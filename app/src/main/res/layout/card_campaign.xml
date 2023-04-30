@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:padding="16dp">
 
+
         <TextView
             android:id="@+id/campaignTitleLabel"
             android:layout_width="wrap_content"
