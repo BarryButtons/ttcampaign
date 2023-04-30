@@ -43,10 +43,11 @@ class CampaignJSONStore(private val context: Context) : CampaignStore {
 
     override fun update(campaign: CampaignModel) {
         val campaignsList = findAll() as ArrayList<CampaignModel>
-        var foundCampaign: CampaignModel? = campaignsList.find { p -> p.id == campaign.id }
+        val foundCampaign: CampaignModel? = campaignsList.find { p -> p.id == campaign.id }
         if (foundCampaign != null) {
             foundCampaign.title = campaign.title
             foundCampaign.description = campaign.description
+            foundCampaign.dmNotes = campaign.dmNotes
             foundCampaign.image = campaign.image
             foundCampaign.lat = campaign.lat
             foundCampaign.lng = campaign.lng
@@ -63,6 +64,11 @@ class CampaignJSONStore(private val context: Context) : CampaignStore {
     private fun deserialize() {
         val jsonString = read(context, JSON_FILE)
         campaigns = gsonBuilder.fromJson(jsonString, listType)
+    }
+
+    override fun delete(campaign: CampaignModel) {
+        campaigns.remove(campaign)
+        serialize()
     }
 
     private fun logAll() {

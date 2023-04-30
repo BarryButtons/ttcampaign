@@ -7,6 +7,7 @@
     <string name="hint_dmNotes"> Enter Note for players</string>
     <string name="hint_nextSession"> when is next session</string>
     <string name="menu_addCampaign">Add</string>
+    <string name="menu_addMaps">Maps</string>
     <string name="menu_cancelCampaign">Back</string>
     <string name="enter_campaign_title"> Please enter a Campaign Title </string>
     <string name="save_campaign"> Save Campaign </string>

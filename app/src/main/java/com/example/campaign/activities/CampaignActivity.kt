@@ -31,7 +31,7 @@ class CampaignActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        edit = true
+        edit = false
 
         binding = ActivityCampaignBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -95,11 +95,9 @@ class CampaignActivity : AppCompatActivity() {
     }
 
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_campaign,menu)
-        if (edit) if (menu != null) {
-            menu.getItem(0).isVisible = true
-        }
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu_campaign, menu)
+        if (edit) menu.getItem(0).isVisible = true
         return super.onCreateOptionsMenu(menu)
     }
 

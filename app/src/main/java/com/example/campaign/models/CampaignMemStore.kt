@@ -29,6 +29,7 @@ class CampaignMemStore : CampaignStore{
             foundCampaign.title = campaign.title
             foundCampaign.description = campaign.description
             foundCampaign.dmNotes = campaign.dmNotes
+            foundCampaign.image = campaign.image
             foundCampaign.lat = campaign.lat
             foundCampaign.lng = campaign.lng
             foundCampaign.zoom = campaign.zoom
