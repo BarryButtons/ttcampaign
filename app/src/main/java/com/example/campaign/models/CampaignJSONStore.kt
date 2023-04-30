@@ -42,7 +42,17 @@ class CampaignJSONStore(private val context: Context) : CampaignStore {
 
 
     override fun update(campaign: CampaignModel) {
-        // todo
+        val campaignsList = findAll() as ArrayList<CampaignModel>
+        var foundCampaign: CampaignModel? = campaignsList.find { p -> p.id == campaign.id }
+        if (foundCampaign != null) {
+            foundCampaign.title = campaign.title
+            foundCampaign.description = campaign.description
+            foundCampaign.image = campaign.image
+            foundCampaign.lat = campaign.lat
+            foundCampaign.lng = campaign.lng
+            foundCampaign.zoom = campaign.zoom
+        }
+        serialize()
     }
 
     private fun serialize() {

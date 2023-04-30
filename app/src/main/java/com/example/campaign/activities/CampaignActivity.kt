@@ -26,11 +26,12 @@ class CampaignActivity : AppCompatActivity() {
     private lateinit var imageIntentLauncher : ActivityResultLauncher<Intent>
     private lateinit var mapIntentLauncher : ActivityResultLauncher<Intent>
     //var location = Location(52.245696, -7.139102, 15f)
+    var edit = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        var edit = false
+        edit = true
 
         binding = ActivityCampaignBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -96,11 +97,19 @@ class CampaignActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_campaign,menu)
+        if (edit) if (menu != null) {
+            menu.getItem(0).isVisible = true
+        }
         return super.onCreateOptionsMenu(menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId){
+            R.id.item_delete -> {
+                setResult(99)
+                app.campaigns.delete(campaign)
+                finish()
+            }
             R.id.item_cancel -> {
                 finish()
             }

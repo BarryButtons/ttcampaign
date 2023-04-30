@@ -38,4 +38,8 @@ class CampaignMemStore : CampaignStore{
     private fun logAll(){
         campaigns.forEach{ i("$it")}
     }
+    override fun delete(campaign: CampaignModel) {
+       campaigns.remove(campaign)
+    }
+
 }

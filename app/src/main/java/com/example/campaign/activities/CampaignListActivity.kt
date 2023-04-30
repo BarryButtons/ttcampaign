@@ -24,6 +24,7 @@ class CampaignListActivity : AppCompatActivity(), CampaignListener {
 
     lateinit var app: MainApp
     private lateinit var binding: ActivityCampaignListBinding
+    private var position: Int = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -63,9 +64,10 @@ class CampaignListActivity : AppCompatActivity(), CampaignListener {
             }
         }
 
-    override fun onCampaignClick(campaign: CampaignModel) {
+    override fun onCampaignClick(campaign: CampaignModel, pos : Int) {
         val launcherIntent = Intent(this,CampaignActivity::class.java)
         launcherIntent.putExtra("campaign_edit",campaign)
+        position = pos
         getClickResult.launch(launcherIntent)
     }
 
@@ -77,7 +79,12 @@ class CampaignListActivity : AppCompatActivity(), CampaignListener {
                 (binding.recyclerView.adapter)?.
                         notifyItemRangeChanged(0,app.campaigns.findAll().size)
             }
+            else // Deleting
+                if (it.resultCode == 99)
+                    (binding.recyclerView.adapter)?.notifyItemRemoved(position)
         }
+
+
 
 }
 
