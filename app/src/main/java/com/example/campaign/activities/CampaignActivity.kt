@@ -1,6 +1,7 @@
 package com.example.campaign.activities
 
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -46,13 +47,15 @@ class CampaignActivity : AppCompatActivity() {
             binding.campaignTitle.setText(campaign.title)
             binding.description.setText(campaign.description)
             binding.dmNotes.setText(campaign.dmNotes)
-           // binding.players.setText(campaign.players.toString())
+            // binding.players.setText(campaign.players.toString())
             binding.btnAdd.setText(R.string.save_campaign)
             Picasso.get()
                 .load(campaign.image)
                 .into(binding.campaignImage)
+            if (campaign.image != Uri.EMPTY) {
+                binding.chooseImage.setText(R.string.change_campaign_image)
+            }
         }
-
         binding.btnAdd.setOnClickListener() {
             campaign.title = binding.campaignTitle.text.toString()
             campaign.description = binding.description.text.toString()
@@ -85,7 +88,6 @@ class CampaignActivity : AppCompatActivity() {
                 .putExtra("location", location)
             mapIntentLauncher.launch(launcherIntent)
         }
-
 
         registerImagePickerCallback()
         registerMapCallback()
@@ -122,7 +124,7 @@ class CampaignActivity : AppCompatActivity() {
                             Picasso.get()
                                 .load(campaign.image)
                                 .into(binding.campaignImage)
-                            binding.chooseImage.setText("Add Image")
+                            binding.chooseImage.setText(R.string.change_campaign_image)
                         } // end of if
                     }
                     RESULT_CANCELED -> { } else -> { }
