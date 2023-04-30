@@ -1,6 +1,7 @@
 package com.example.campaign.activities
 
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -25,11 +26,12 @@ class CampaignActivity : AppCompatActivity() {
     private lateinit var imageIntentLauncher : ActivityResultLauncher<Intent>
     private lateinit var mapIntentLauncher : ActivityResultLauncher<Intent>
     //var location = Location(52.245696, -7.139102, 15f)
+    var edit = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        var edit = false
+        edit = true
 
         binding = ActivityCampaignBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -46,13 +48,15 @@ class CampaignActivity : AppCompatActivity() {
             binding.campaignTitle.setText(campaign.title)
             binding.description.setText(campaign.description)
             binding.dmNotes.setText(campaign.dmNotes)
-           // binding.players.setText(campaign.players.toString())
+            // binding.players.setText(campaign.players.toString())
             binding.btnAdd.setText(R.string.save_campaign)
             Picasso.get()
                 .load(campaign.image)
                 .into(binding.campaignImage)
+            if (campaign.image != Uri.EMPTY) {
+                binding.chooseImage.setText(R.string.change_campaign_image)
+            }
         }
-
         binding.btnAdd.setOnClickListener() {
             campaign.title = binding.campaignTitle.text.toString()
             campaign.description = binding.description.text.toString()
@@ -71,8 +75,9 @@ class CampaignActivity : AppCompatActivity() {
             }
         }
         binding.chooseImage.setOnClickListener {
-            showImagePicker(imageIntentLauncher)
+            showImagePicker(imageIntentLauncher,this)
         }
+
         binding.campaignLocation.setOnClickListener {
             val location = Location(52.245696, -7.139102, 15f)
             if (campaign.zoom != 0f){
@@ -85,7 +90,6 @@ class CampaignActivity : AppCompatActivity() {
             mapIntentLauncher.launch(launcherIntent)
         }
 
-
         registerImagePickerCallback()
         registerMapCallback()
     }
@@ -93,11 +97,19 @@ class CampaignActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_campaign,menu)
+        if (edit) if (menu != null) {
+            menu.getItem(0).isVisible = true
+        }
         return super.onCreateOptionsMenu(menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId){
+            R.id.item_delete -> {
+                setResult(99)
+                app.campaigns.delete(campaign)
+                finish()
+            }
             R.id.item_cancel -> {
                 finish()
             }
@@ -112,16 +124,23 @@ class CampaignActivity : AppCompatActivity() {
                     RESULT_OK -> {
                         if (result.data != null) {
                             i("Got Result ${result.data!!.data}")
-                            campaign.image = result.data!!.data!!
+
+                            val image = result.data!!.data!!
+                            contentResolver.takePersistableUriPermission(image,
+                                Intent.FLAG_GRANT_READ_URI_PERMISSION)
+                            campaign.image = image
+
                             Picasso.get()
                                 .load(campaign.image)
                                 .into(binding.campaignImage)
+                            binding.chooseImage.setText(R.string.change_campaign_image)
                         } // end of if
                     }
                     RESULT_CANCELED -> { } else -> { }
                 }
             }
     }
+
 
     private fun registerMapCallback() {
         mapIntentLauncher =

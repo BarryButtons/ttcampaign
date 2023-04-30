@@ -6,9 +6,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.campaign.models.CampaignModel
 import com.example.campaign.databinding.CardCampaignBinding
+import com.squareup.picasso.Picasso
 
 interface CampaignListener{
-    fun onCampaignClick(campaign:CampaignModel)
+    fun onCampaignClick(campaign: CampaignModel, position : Int)
 }
 class CampaignAdapter constructor(private var campaigns: List<CampaignModel>,
                                 private val listener: CampaignListener):
@@ -35,8 +36,9 @@ class CampaignAdapter constructor(private var campaigns: List<CampaignModel>,
             binding.campaignTitle.text = campaign.title
             binding.description.text = campaign.description
             binding.dmNotes.text = campaign.dmNotes
+            Picasso.get().load(campaign.image).resize(200,200).into(binding.imageIcon)
             //binding.players.inputType = InputType.TYPE_CLASS_NUMBER
-            binding.root.setOnClickListener{listener.onCampaignClick(campaign)}
+            binding.root.setOnClickListener{listener.onCampaignClick(campaign,adapterPosition)}
 
         }
     }
