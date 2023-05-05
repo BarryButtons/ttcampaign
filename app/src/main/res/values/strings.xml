@@ -16,6 +16,8 @@
     <string name="select_campaign_image">Select campaign image</string>
     <string name="change_campaign_image">Change campaign image</string>
     <string name="button_location">See Location</string>
+    <string name="button_delete">Delete Campaign</string>
+
     <string name="title_activity_map">MapActivity</string>
     <string name="menu_deleteCampaign">Delete</string>
     <string name="title_activity_campaign_maps">CampaignMapsActivity</string>
