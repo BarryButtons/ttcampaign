@@ -36,7 +36,9 @@ class CampaignAdapter constructor(private var campaigns: List<CampaignModel>,
             binding.campaignTitle.text = campaign.title
             binding.description.text = campaign.description
             binding.dmNotes.text = campaign.dmNotes
-            Picasso.get().load(campaign.image).resize(200,200).into(binding.imageIcon)
+            binding.nextSession.text = campaign.nextSession
+            binding.sessionLocation.text = campaign.sessionLocation
+            Picasso.get().load(campaign.image).resize(200,150).into(binding.imageIcon)
             //binding.players.inputType = InputType.TYPE_CLASS_NUMBER
             binding.root.setOnClickListener{listener.onCampaignClick(campaign,adapterPosition)}
 

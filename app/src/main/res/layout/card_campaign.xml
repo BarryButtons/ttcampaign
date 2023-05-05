@@ -20,16 +20,13 @@
             android:layout_marginEnd="10dp"
             android:contentDescription="@string/change_campaign_image"/>
 
-        <Button
+       <Button
             android:id="@+id/item_delete"
             android:layout_width="50dp"
             android:layout_height="20dp"
             android:layout_marginTop="150dp"
             android:layout_marginLeft="320dp"
-
             android:background="@color/purple_200"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp"
             android:rotationY="0"
             android:stateListAnimator="@null"
             android:text="Delete"
