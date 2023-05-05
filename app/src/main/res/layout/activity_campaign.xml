@@ -93,7 +93,7 @@
                     android:autofillHints="hint"
                     android:hint="@string/hint_campaignDescription"
                     android:inputType="text"
-                    android:maxLength="25"
+                    android:maxLength="75"
                     android:maxLines="1"
                     android:padding="8dp"
                     android:textSize ="14sp" />
