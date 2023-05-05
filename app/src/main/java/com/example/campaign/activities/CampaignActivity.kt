@@ -48,6 +48,8 @@ class CampaignActivity : AppCompatActivity() {
             binding.campaignTitle.setText(campaign.title)
             binding.description.setText(campaign.description)
             binding.dmNotes.setText(campaign.dmNotes)
+            binding.sessionLocation.setText(campaign.sessionLocation)
+            binding.nextSession.setText(campaign.nextSession)
             // binding.players.setText(campaign.players.toString())
             binding.btnAdd.setText(R.string.save_campaign)
             Picasso.get()
@@ -61,6 +63,8 @@ class CampaignActivity : AppCompatActivity() {
             campaign.title = binding.campaignTitle.text.toString()
             campaign.description = binding.description.text.toString()
             campaign.dmNotes = binding.dmNotes.text.toString()
+            campaign.sessionLocation = binding.sessionLocation.text.toString()
+            campaign.nextSession = binding.nextSession.text.toString()
            // campaign.players = binding.players.text.toString().toIntOrNull() ?:0
             if (campaign.title.isNotEmpty()) {
                 if (edit) {

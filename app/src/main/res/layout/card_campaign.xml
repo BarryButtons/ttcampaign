@@ -14,9 +14,10 @@
 
         <ImageView
             android:id="@+id/imageIcon"
-            android:layout_width="128dp"
+            android:layout_width="226dp"
             android:layout_height="128dp"
-            android:layout_marginLeft="234dp"
+            android:layout_below="@id/dmNotes"
+
             android:layout_marginTop="16dp"
             android:contentDescription="@string/change_campaign_image"
             app:layout_constraintEnd_toEndOf="parent"
@@ -35,8 +36,6 @@
             android:textSize="16sp"
             android:textStyle="bold"
             />
-
-
 
         <TextView
             android:id="@+id/campaignTitle"

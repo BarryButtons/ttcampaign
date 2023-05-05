@@ -48,6 +48,8 @@ class CampaignJSONStore(private val context: Context) : CampaignStore {
             foundCampaign.title = campaign.title
             foundCampaign.description = campaign.description
             foundCampaign.dmNotes = campaign.dmNotes
+            foundCampaign.nextSession = campaign.nextSession
+            foundCampaign.sessionLocation = campaign.sessionLocation
             foundCampaign.image = campaign.image
             foundCampaign.lat = campaign.lat
             foundCampaign.lng = campaign.lng

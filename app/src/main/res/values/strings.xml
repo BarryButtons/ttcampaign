@@ -5,7 +5,8 @@
     <string name="hint_campaignTitle">Campaign Title</string>
     <string name="hint_campaignDescription"> Description</string>
     <string name="hint_dmNotes"> Enter Note for players</string>
-    <string name="hint_nextSession"> when is next session</string>
+    <string name="hint_nextSession"> When is next session</string>
+    <string name="hint_sessionLocation"> Where is next session</string>
     <string name="menu_addCampaign">Add</string>
     <string name="menu_addMaps">Maps</string>
     <string name="menu_cancelCampaign">Back</string>
@@ -14,8 +15,17 @@
     <string name="button_addImage"> Add Image </string>
     <string name="select_campaign_image">Select campaign image</string>
     <string name="change_campaign_image">Change campaign image</string>
-    <string name="button_location">Set Location</string>
+    <string name="button_location">See Location</string>
     <string name="title_activity_map">MapActivity</string>
     <string name="menu_deleteCampaign">Delete</string>
+    <string name="title_activity_campaign_maps">CampaignMapsActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 
 </resources>
