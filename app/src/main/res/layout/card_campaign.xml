@@ -16,9 +16,9 @@
             android:id="@+id/imageIcon"
             android:layout_width="226dp"
             android:layout_height="128dp"
-            android:layout_below="@id/dmNotes"
 
             android:layout_marginTop="16dp"
+            android:layout_marginLeft="160dp"
             android:contentDescription="@string/change_campaign_image"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -81,6 +81,42 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/dmNotesLabel"
             tools:text="Notes for Players" />
+
+        <TextView
+            android:id="@+id/nextSessionLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/dmNotes"
+            android:layout_marginTop="10dp"
+            android:text="Next Session"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/nextSession"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/nextSessionLabel"
+            tools:text="Date of Next Session" />
+
+        <TextView
+            android:id="@+id/sessionLocationLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/nextSession"
+            android:layout_marginTop="10dp"
+            android:text="Next Session"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/sessionLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/sessionLocationLabel"
+            tools:text="Where is the next session" />
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

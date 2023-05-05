@@ -128,16 +128,16 @@
 
                 <TextView
                     android:id="@+id/nextSessionLabel"
-                    android:textColor="@color/white"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/description"
-                    android:layout_marginTop="10dp"
                     android:layout_marginLeft="10dp"
-                    android:text="DM Notes"
+                    android:layout_marginTop="10dp"
+                    android:text="Next Session"
                     android:textAllCaps="true"
-                    android:textStyle="bold"
-                    android:textSize="16sp" />
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
                 <EditText
                     android:id="@+id/nextSession"
@@ -147,7 +147,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
                     android:autofillHints="hint"
-                    android:hint="@string/hint_dmNotes"
+                    android:hint="@string/hint_nextSession"
                     android:inputType="text"
                     android:maxLength="100"
                     android:maxLines="1"
@@ -162,7 +162,7 @@
                     android:layout_below="@id/description"
                     android:layout_marginTop="10dp"
                     android:layout_marginLeft="10dp"
-                    android:text="DM Notes"
+                    android:text="Next Session Location"
                     android:textAllCaps="true"
                     android:textStyle="bold"
                     android:textSize="16sp" />
@@ -175,7 +175,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
                     android:autofillHints="hint"
-                    android:hint="@string/hint_dmNotes"
+                    android:hint="@string/hint_sessionLocation"
                     android:inputType="text"
                     android:maxLength="100"
                     android:maxLines="1"
